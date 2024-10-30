@@ -1,6 +1,7 @@
 const express = require('express');
-const userRoutes = require('./Router/userRouter');
-const { closePool } = require('./SQL/database');
+const userRoutes = require('../Router/userRouter');
+const { closePool } = require('../SQL/database');
+const serverless = require('serverless-http');
 const cors = require('cors');
 
 const app = express();
@@ -15,13 +16,17 @@ app.use(cors({
     credentials: true, // Allow cookies to be sent with requests
 }));
 
-app.use('/api', userRoutes); // Mount the user routes at `/api`
+
+app.use('/.netlify/functions/api', userRoutes);
+module.exports.handler = serverless(app);
+
+// app.use('/api', userRoutes); // Mount the user routes at `/api`
 
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// // Start the server
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
 
 // Handle graceful shutdown
 process.on('SIGINT', async () => {
