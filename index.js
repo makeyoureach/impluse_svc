@@ -10,7 +10,7 @@ app.use(express.json()); // Parse JSON bodies
 
 // Enable CORS for all routes
 app.use(cors({
-    origin: 'http://localhost:3000', // Allow only this origin to access the API
+    origin: 'https://impulsecoachinginstitute.co.in', // Allow only this origin to access the API
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
     credentials: true, // Allow cookies to be sent with requests
 }));
