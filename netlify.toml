@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"  # Replace with your build command if different
+  publish = "public"  # The folder where your static site assets are stored
+
+[functions]
+  directory = "netlify/functions"  # Points to serverless functions folder
